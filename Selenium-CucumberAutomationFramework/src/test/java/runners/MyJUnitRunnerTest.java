@@ -9,9 +9,9 @@ import io.cucumber.junit.Cucumber;
 (features="src/test/resources/Features",
 glue={"StepDefinitions","hooks","customType"},
 monochrome = true,
-plugin = {"pretty", "html:target/CucumberReports/cucumber.html"},
-tags = "@smoke or @SIT"
+plugin = {"pretty", "html:target/CucumberReports/cucumber.html"}
+
 )
-public class TestRunner {
+public class MyJUnitRunnerTest {
 
 }

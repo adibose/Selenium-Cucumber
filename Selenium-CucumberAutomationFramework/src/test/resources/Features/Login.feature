@@ -10,8 +10,8 @@ Feature: Test Login functionality
 
     Examples: 
       | username  | password |
-      | "aditya"  | "12345"  |
-      | "pallabi" | "12345"  |
+      | "pallabi"  | "12345"  |
+      | "aditya" | "12345"  |
 
   @smoke
   Scenario: Check login functionality with invalid credentials
