@@ -1,5 +1,5 @@
 Feature: Entering personal details
-
+	@SIT
   Scenario: using default payment option
     Given I'm a user
     And my personal details are
