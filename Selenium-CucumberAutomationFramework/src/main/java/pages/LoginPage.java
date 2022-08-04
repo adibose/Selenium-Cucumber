@@ -17,9 +17,14 @@ public class LoginPage extends BasePage {
 	@FindBy(xpath="//div[text()='Password is invalid']")private WebElement validateInvalidMessage;
 	
 	
-	public void enterLoginCredentials(String username, String password) {
+	public void load(String url) {
+		driver.get(url);
+	}
+	
+	public LoginPage enterLoginCredentials(String username, String password) {
 		wait.until(ExpectedConditions.elementToBeClickable(enterName)).sendKeys(username);
 		wait.until(ExpectedConditions.elementToBeClickable(enterPassword)).sendKeys(password);
+		return this;
 	}
 	
 	public void clickLogin() {

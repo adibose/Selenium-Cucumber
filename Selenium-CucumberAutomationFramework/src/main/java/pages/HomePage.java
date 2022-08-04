@@ -13,13 +13,19 @@ public class HomePage extends BasePage {
 		super(driver);
 	}
 	
-	@FindBy(id="greetings")private WebElement getMessage;
+	@FindBy(xpath="//p[@id='greetings']")private WebElement getMessage;
 	@FindBy(id="country")private WebElement myCountry;
 	@FindBy(id="address")private WebElement myAddress;
 	@FindBy(id="email")private WebElement myEmail;
 	@FindBy(id="phone")private WebElement myPhone;
 	@FindBy(id="save")private WebElement clickSave;
 	@FindBy(xpath="//span[@class='tp-saved']")private WebElement successMessage;
+	
+	
+	public String validateGreetMessage() {
+		System.out.println("Pageeeeeeeeeee"+getMessage.getText());
+		return getMessage.getText();
+	}
 	
 	public void	enterPersonalDetails(PersonalDetails pDetails) {
 		Select countryDropdown = new Select(myCountry);
