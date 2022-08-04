@@ -8,9 +8,10 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class DriverFactory {
 	
-	private static WebDriver driver;
 	
 	public static WebDriver driverInitialize() {
+		
+		WebDriver driver;
 		driver = WebDriverManager.chromedriver().create();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
