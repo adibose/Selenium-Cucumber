@@ -7,17 +7,20 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import domainObjects.PersonalDetails;
 import factory.DriverFactory;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import pages.HomePage;
 import pages.LoginPage;
 
 public class LoginStepDef {
 	
 	WebDriver driver;
 	private String userName;
+	private PersonalDetails pDetails;
 	
 	@Given("browser is open")
 	public void browser_is_open() {
@@ -68,6 +71,40 @@ public class LoginStepDef {
 		Assert.assertEquals("Password is invalid", new LoginPage(driver).validateErrorMessage());
 	    
 	}
+	
+	@Given("I'm a user")
+	public void i_m_a_user() {
+		driver = DriverFactory.getDriver();
+	}
+
+	@Given("my personal details are")
+	public void my_personal_details_are(PersonalDetails pDetails) {
+			this.pDetails = pDetails;
+	}
+
+	@When("I logged into my application")
+	public void i_logged_into_my_application() {
+		driver.get("https://example.testproject.io/web/");
+		new LoginPage(driver).enterLoginCredentials("Aditya","12345");
+		new LoginPage(driver).clickLogin();
+	}
+
+	@When("I provide the details")
+	public void i_provide_the_details() {
+	    new HomePage(driver).enterPersonalDetails(pDetails);
+	    
+	}
+
+	@When("I clicked on Save")
+	public void i_clicked_on_save() {
+	    new HomePage(driver).clickSave();
+	}
+
+	@Then("I should see saved message on Screen")
+	public void i_should_see_saved_message_on_screen() {
+	    Assert.assertEquals("Saved", new HomePage(driver).validateSuccessMessage());
+	}
+
 
 
 }
