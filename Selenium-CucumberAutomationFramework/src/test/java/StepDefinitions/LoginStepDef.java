@@ -15,12 +15,14 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.HomePage;
 import pages.LoginPage;
+import utils.ConfigLoader;
 
 public class LoginStepDef {
 	
 	WebDriver driver;
 	private String userName;
 	private PersonalDetails pDetails;
+	private String url = ConfigLoader.getInstance().getBaseUrl();
 	
 	@Given("browser is open")
 	public void browser_is_open() {
@@ -30,7 +32,7 @@ public class LoginStepDef {
 	@And("user is in login page")
 	public void user_is_in_login_page() throws InterruptedException {
 		
-		driver.get("https://example.testproject.io/web/");
+		driver.get(url);
 
 	}
 
@@ -84,7 +86,7 @@ public class LoginStepDef {
 
 	@When("I logged into my application")
 	public void i_logged_into_my_application() {
-		driver.get("https://example.testproject.io/web/");
+		driver.get(url);
 		new LoginPage(driver).enterLoginCredentials("Aditya","12345");
 		new LoginPage(driver).clickLogin();
 	}
